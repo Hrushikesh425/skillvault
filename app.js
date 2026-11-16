@@ -156,7 +156,7 @@ function renderSkills(){
 
   $('skillGrid').innerHTML = list.map(p => {
     const canBook = state.credits >= 1;
-    return '<article class="skill-card">' +
+    return '<article class="skill-card" data-cat="' + esc(p.cat) + '">' +
       '<div class="skill-top">' +
         '<div class="avatar ' + p.av + '">' + p.initials + '</div>' +
         '<div class="who"><b>' + esc(p.name) + (p.verified ? ' <span style="color:#b7791f;font-size:11px">●</span>' : '') + '</b><span>' + p.swaps + ' swaps · ' + p.level + '</span></div>' +
@@ -164,7 +164,7 @@ function renderSkills(){
       '</div>' +
       '<div class="skill-title">' + esc(p.skill) + '</div>' +
       '<p class="skill-desc">' + esc(p.desc) + '</p>' +
-      '<div class="skill-tags"><span class="mini-tag">' + esc(p.format) + '</span><span class="mini-tag">' + esc(p.cat) + '</span>' + (p.verified ? '<span class="mini-tag" style="color:#96650a;border-color:#f0dcaa;background:#fff6e0">Verified</span>' : '') + '</div>' +
+      '<div class="skill-tags"><span class="mini-tag">' + esc(p.format) + '</span><span class="mini-tag cat-tag">' + esc(p.cat) + '</span>' + (p.verified ? '<span class="mini-tag" style="color:#96650a;border-color:#f0dcaa;background:#fff6e0">Verified</span>' : '') + '</div>' +
       '<div class="skill-foot">' +
         '<div class="cost"><b>1 TC</b> / hour <span class="match" style="margin-left:6px">' + p.match + '% match</span></div>' +
         '<button class="btn btn-primary btn-sm" data-book="' + p.id + '"' + (canBook ? '' : ' disabled') + '>' + (canBook ? 'Book swap' : 'Need credits') + '</button>' +
@@ -237,7 +237,7 @@ function renderListings(){
     return;
   }
   grid.innerHTML = state.listings.map((l, i) =>
-    '<article class="skill-card">' +
+    '<article class="skill-card" data-cat="' + esc(l.cat) + '">' +
       '<div class="skill-top">' +
         '<div class="avatar av-2">' + initialsOf(state.name || 'Guest') + '</div>' +
         '<div class="who"><b>You' + (state.verified ? ' <span style="color:#b7791f;font-size:11px">●</span>' : '') + '</b><span>Our newest teacher · 0 swaps</span></div>' +
@@ -245,7 +245,7 @@ function renderListings(){
       '</div>' +
       '<div class="skill-title">' + esc(l.skill) + '</div>' +
       '<p class="skill-desc">' + esc(l.desc || 'A one-hour, beginner-friendly intro session.') + '</p>' +
-      '<div class="skill-tags"><span class="mini-tag">' + esc(l.cat) + '</span><span class="mini-tag">' + esc(l.level) + '</span><span class="mini-tag">' + esc(l.format) + '</span></div>' +
+      '<div class="skill-tags"><span class="mini-tag cat-tag">' + esc(l.cat) + '</span><span class="mini-tag">' + esc(l.level) + '</span><span class="mini-tag">' + esc(l.format) + '</span></div>' +
       '<div class="skill-foot">' +
         '<div class="cost"><b>1 TC</b> / hour earned</div>' +
         '<button class="btn btn-ghost btn-sm" data-simulate="' + i + '">Simulate booking</button>' +
@@ -469,7 +469,7 @@ function bindEvents(){
       if(VIEW_META[v]){ switchView(v); if(v === 'wallet') history.replaceState(null,'','#wallet'); }
       return;
     }
-    const chip = e.target.closest('[data-cat]');
+    const chip = e.target.closest('.chip[data-cat]');
     if(chip){ activeCategory = chip.dataset.cat; renderChips(); renderSkills(); return; }
 
     const book = e.target.closest('[data-book]');
