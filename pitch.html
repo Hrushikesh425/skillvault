@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pitch Deck — SkillVault.io</title>
+<meta name="description" content="10-minute, 5-speaker presentation plan for SkillVault.io with demo script, revenue math and Q&A prep.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%237c5cff'/><text x='50' y='68' font-size='54' font-family='Segoe UI,sans-serif' font-weight='bold' text-anchor='middle' fill='white'>S</text></svg>">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="logo" href="index.html">
+      <span class="logo-mark">S</span>
+      <span>SkillVault.io<small>Pitch run sheet</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="#speakers">Speakers</a>
+      <a href="#finance">Revenue model</a>
+      <a href="#script">Demo script</a>
+      <a href="#qa">Q&amp;A prep</a>
+    </div>
+    <div class="nav-actions">
+      <button class="btn btn-ghost btn-sm" onclick="window.print()">Print / PDF</button>
+      <a class="btn btn-primary btn-sm" href="dashboard.html">Open live demo</a>
+    </div>
+  </div>
+</nav>
+
+<header class="section pitch-hero">
+  <div class="container">
+    <span class="hero-badge"><span class="dot"></span>10 minutes · 5 speakers · 1 working prototype</span>
+    <h1 style="font-size:clamp(34px,4.6vw,54px);margin:18px 0 16px;letter-spacing:-.03em">The pitch plan: <span class="grad">2 minutes each, zero dead air.</span></h1>
+    <p class="lead" style="color:var(--muted);font-size:17px;max-width:720px">Everything the team needs on one page: who speaks when, what each person says, the exact demo clicks, the revenue math and the answers to the questions teachers actually ask.</p>
+    <div class="hero-stats">
+      <div class="stat"><b>10:00</b><span>Total run time</span></div>
+      <div class="stat"><b>5 × 2:00</b><span>Speaker slots</span></div>
+      <div class="stat"><b>90 sec</b><span>Live demo window</span></div>
+      <div class="stat"><b>12</b><span>Prepared Q&amp;A answers</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="speakers" style="padding-top:20px">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Run sheet</div>
+      <h2 class="section-title">Who says what.</h2>
+      <p class="section-sub">Each speaker owns one idea. No overlap, no repeated lines. Handover happens on the final sentence, not after it.</p>
+    </div>
+
+    <div class="runsheet">
+      <article class="speaker-card">
+        <div class="sp-num">01</div>
+        <div class="sp-body">
+          <div class="sp-head">
+            <div>
+              <h3>The Hook &amp; Problem</h3>
+              <span class="sp-role">Speaker 1 · opens the pitch</span>
+            </div>
+            <span class="sp-time">0:00 – 2:00</span>
+          </div>
+          <ul class="sp-list">
+            <li>Open with a question: "How many of you have paid for a skill you could have learned from the person sitting next to you?"</li>
+            <li>Name the pain: private tutoring costs ₹500–₹1,500 an hour. Students are rich in skills and broke in cash.</li>
+            <li>Show the waste: every campus has coders, guitarists and French speakers whose skills never get traded.</li>
+            <li>State the third problem: no trust layer. Meeting a stranger to swap skills has no protection.</li>
+          </ul>
+          <div class="sp-line"><b>Handover line:</b> "So we asked a simple question — what if the currency was time, not money?"</div>
+        </div>
+      </article>
+
+      <article class="speaker-card">
+        <div class="sp-num">02</div>
+        <div class="sp-body">
+          <div class="sp-head">
+            <div>
+              <h3>The Solution &amp; Live UI Mockup</h3>
+              <span class="sp-role">Speaker 2 · runs the product demo</span>
+            </div>
+            <span class="sp-time">2:00 – 4:00</span>
+          </div>
+          <ul class="sp-list">
+            <li>Introduce SkillVault: peer-to-peer skill barter on campus, with 1 hour taught = 1 Time Credit.</li>
+            <li>Signal up on the projector, claim the 5 starter credits live — the number visibly appears in the balance pill.</li>
+            <li>Demonstrate the loop: search a skill, book a session, show the credit locking in escrow.</li>
+            <li>Confirm the session and let escrow release on screen. Point at the ledger entry as proof it settled.</li>
+          </ul>
+          <div class="sp-line"><b>Demo rule:</b> narrate the "why", not the clicks. Say "notice the credit is locked, not paid" — that line does the work.</div>
+        </div>
+      </article>
+
+      <article class="speaker-card">
+        <div class="sp-num">03</div>
+        <div class="sp-body">
+          <div class="sp-head">
+            <div>
+              <h3>Core Features &amp; Trust Engine</h3>
+              <span class="sp-role">Speaker 3 · the engine room</span>
+            </div>
+            <span class="sp-time">4:00 – 6:00</span>
+          </div>
+          <ul class="sp-list">
+            <li>Time-Credit Escrow Vault: credits lock at booking and release only after dual confirmation. Ghosting earns nothing.</li>
+            <li>AI Skill Matching: ranks peers by skill fit, availability, rating and swap history — not by who paid for ads.</li>
+            <li>Verified Trust Badges: ID and portfolio verification for top swappers, so credibility arrives before the first message.</li>
+            <li>Hybrid Cash Bridge: ₹299 starter packs on UPI for people who want to learn before they earn.</li>
+          </ul>
+          <div class="sp-line"><b>Handover line:</b> "That trust engine is free for students. So where does the money come from?"</div>
+        </div>
+      </article>
+
+      <article class="speaker-card">
+        <div class="sp-num">04</div>
+        <div class="sp-body">
+          <div class="sp-head">
+            <div>
+              <h3>Business Model &amp; Revenue</h3>
+              <span class="sp-role">Speaker 4 · the numbers</span>
+            </div>
+            <span class="sp-time">6:00 – 8:00</span>
+          </div>
+          <ul class="sp-list">
+            <li>Core barter stays free forever — that protects adoption and word of mouth.</li>
+            <li>SkillVault Pro at ₹199/month: unlimited swaps plus priority ranking for power users.</li>
+            <li>Credit Top-Up Packs at ₹299 for instant credits, and Verified Badges at ₹499 one-time for credibility.</li>
+            <li>Anchor it with the 5,000-student scenario: an illustrative ₹3.09 lakh monthly revenue at conservative conversion.</li>
+          </ul>
+          <div class="sp-line"><b>Frame it honestly:</b> "We monetise convenience and credibility, never the barter itself."</div>
+        </div>
+      </article>
+
+      <article class="speaker-card">
+        <div class="sp-num">05</div>
+        <div class="sp-body">
+          <div class="sp-head">
+            <div>
+              <h3>Social Proof, Rollout &amp; Close</h3>
+              <span class="sp-role">Speaker 5 · closes and calls to action</span>
+            </div>
+            <span class="sp-time">8:00 – 10:00</span>
+          </div>
+          <ul class="sp-list">
+            <li>Social proof: Priya traded three Python hours for guitar lessons; Arjun says escrow is the reason he shows up.</li>
+            <li>Rollout: one campus at a time. 30 founding swappers, 100 confirmed swaps, then ambassadors and three neighbouring campuses.</li>
+            <li>Why we win: dense campus networks make trust spread faster than any ad budget can buy.</li>
+            <li>Close with the ask: pilot SkillVault in our own college this semester and be our first 50 users.</li>
+          </ul>
+          <div class="sp-line"><b>Closing line:</b> "You already have something worth teaching. SkillVault turns it into something worth learning."</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="finance">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Revenue model</div>
+      <h2 class="section-title">Illustrative unit economics.</h2>
+      <p class="section-sub">Conservative assumptions across five campuses with 5,000 active students. Top-ups and badges are modelled as one-time monthly purchases from a share of users.</p>
+    </div>
+    <div class="panel" style="margin-bottom:22px">
+      <div style="overflow-x:auto">
+        <table class="math-table">
+          <thead>
+            <tr><th>Stream</th><th>Price</th><th>Assumption</th><th>Monthly revenue</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><b>SkillVault Pro</b><br><span style="font-size:12px">Subscription</span></td><td>₹199 / mo</td><td>6% of 5,000 users = 300</td><td><b>₹59,700</b></td></tr>
+            <tr><td><b>Credit Top-Up Packs</b><br><span style="font-size:12px">One-time, repeatable</span></td><td>₹299</td><td>10% buy one pack per month = 500</td><td><b>₹1,49,500</b></td></tr>
+            <tr><td><b>Verified Trust Badges</b><br><span style="font-size:12px">One-time</span></td><td>₹499</td><td>4% verify per month = 200</td><td><b>₹99,800</b></td></tr>
+            <tr class="math-total"><td><b>Illustrative total</b></td><td>—</td><td>Blended, pre-cost</td><td>₹3,09,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Why free stays free</h3>
+        <p>Charging commission on swaps would kill the zero-cash promise. Revenue comes from speed (top-ups), priority (Pro) and trust (badges).</p>
+      </div>
+      <div class="card">
+        <h3>Cost structure</h3>
+        <p>Hosting and matching are low-cost at campus scale. Biggest spend is campus ambassadors, paid in Pro accounts and referral credits.</p>
+      </div>
+      <div class="card">
+        <h3>Honest limitation</h3>
+        <p>These are projections on 5,000 users, not actuals. Validation milestone: 100 completed swaps with 30% week-4 retention before spending on growth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="script">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Live demo script</div>
+      <h2 class="section-title">The exact 90 seconds on screen.</h2>
+      <p class="section-sub">Rehearse this sequence twice before presenting. The demo is local, so it works without internet.</p>
+    </div>
+    <div class="panel">
+      <div class="demo-steps">
+        <div class="demo-step"><div><b>Open the demo and claim credits</b><span>Go to dashboard.html, type your name, press "Claim my 5 credits". The balance pill updates from 0 to 5.</span></div></div>
+        <div class="demo-step"><div><b>Say the core promise out loud</b><span>"Five free hours. One hour taught equals one credit earned equals one hour learned. No cash."</span></div></div>
+        <div class="demo-step"><div><b>Search and filter a skill</b><span>Type "Python" or click the Coding chip. Point at the match score and the verified badge on Ananya's card.</span></div></div>
+        <div class="demo-step"><div><b>Book the swap</b><span>Click "Book swap", choose 1 hour, show "Balance after booking: 4 TC", then confirm. The credit moves into escrow, not to the teacher.</span></div></div>
+        <div class="demo-step"><div><b>Complete and release</b><span>In My Sessions, click "I completed this session". The peer auto-confirms in 2 seconds — show the released 1 TC and the ledger entry.</span></div></div>
+        <div class="demo-step"><div><b>Prove the earn side</b><span>Open Teach &amp; earn, accept Riya's request, mark it taught, and show the balance go up by 1 TC. The loop is closed.</span></div></div>
+        <div class="demo-step"><div><b>Land the monetisation shot</b><span>Open Wallet, show Pro, the ₹299 top-up and the ₹499 badge. "Free to swap, paid to go faster."</span></div></div>
+      </div>
+    </div>
+    <p class="footer-note">Tip: press <b>Reset demo</b> in the sidebar before each rehearsal so the 5-credit welcome flow replays cleanly.</p>
+  </div>
+</section>
+
+<section class="section" id="qa">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Q&amp;A prep</div>
+      <h2 class="section-title">The six questions teachers will ask.</h2>
+      <p class="section-sub">Answers are short on purpose. One sentence of substance, one sentence of evidence.</p>
+    </div>
+    <div class="qa-grid">
+      <div class="qa"><b>"What stops someone from faking a session?"</b><span>Escrow needs dual confirmation, and repeat fraud gets the badge revoked. Credits only move after both sides agree the hour happened.</span></div>
+      <div class="qa"><b>"Why not just use cash or UPI?"</b><span>Cash prices out the students who need help most. Time equalises value: an hour of guitar is worth an hour of Python.</span></div>
+      <div class="qa"><b>"How do you get the first 100 users?"</b><span>Hand-recruit 30 founding swappers from one department, then run a "Teach Tuesday" swap fair in the library.</span></div>
+      <div class="qa"><b>"Is this a real payment product?"</b><span>This prototype simulates credits locally in the browser. Production would need a licensed payment partner for top-ups.</span></div>
+      <div class="qa"><b>"What about safety and harassment?"</b><span>Verified profiles, campus-only matching, ratings after every swap, and a report flow that freezes escrow during review.</span></div>
+      <div class="qa"><b>"Why would anyone pay for Pro?"</b><span>Heavy swappers want priority ranking and unlimited swaps. At ₹199 it costs less than one hour of private tutoring.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta-band">
+      <h2>Ready to present.</h2>
+      <p>Open the live demo on the projector, keep this run sheet on a second screen, and follow the seven-step script.</p>
+      <div class="hero-ctas" style="justify-content:center;margin-bottom:0">
+        <a class="btn btn-primary" href="dashboard.html">Open the demo</a>
+        <a class="btn btn-ghost" href="index.html">Back to the landing page</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-bottom" style="margin-top:0;border-top:none;padding-top:0">
+      <span>© 2026 SkillVault.io — student demo project. Time Credits have no cash value.</span>
+      <span>Pitch run sheet · 10 minutes · 5 speakers</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

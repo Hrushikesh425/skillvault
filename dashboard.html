@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vault — SkillVault.io</title>
+<meta name="description" content="SkillVault demo vault: time credits, escrow swaps and skill matching.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%237c5cff'/><text x='50' y='68' font-size='54' font-family='Segoe UI,sans-serif' font-weight='bold' text-anchor='middle' fill='white'>S</text></svg>">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-body">
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="logo" href="index.html">
+      <span class="logo-mark">S</span>
+      <span>SkillVault.io<small>Demo vault</small></span>
+    </a>
+    <div class="nav-actions">
+      <div class="balance-pill" title="Available Time Credits">
+        <span class="tc">T</span>
+        <b id="navBalance">0</b>
+        <span>credits available</span>
+      </div>
+      <div class="user-chip">
+        <div class="avatar av-1" id="userAvatar">G</div>
+        <b id="userChipName">Guest</b>
+      </div>
+      <a class="btn btn-ghost btn-sm" href="index.html">Back to site</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container app-shell">
+  <aside class="sidebar">
+    <div class="side-label">Vault</div>
+    <button class="side-link active" data-view="discover"><span class="si">⌕</span> Discover skills</button>
+    <button class="side-link" data-view="sessions"><span class="si">◆</span> My sessions <span class="count" id="sessionsBadge">0</span></button>
+    <button class="side-link" data-view="teach"><span class="si">↑</span> Teach &amp; earn</button>
+    <button class="side-link" data-view="wallet"><span class="si">◈</span> Wallet</button>
+    <div class="sidebar-foot">
+      <div class="plan-badge">Plan <b id="planBadge">Starter</b></div>
+      <button class="side-link" id="resetDemo" style="margin-top:8px"><span class="si">↺</span> Reset demo</button>
+    </div>
+  </aside>
+
+  <main>
+    <div class="topbar">
+      <div>
+        <h1 id="viewTitle">Discover skills</h1>
+        <p id="viewSub">Book a peer with your Time Credits — escrow protects both sides.</p>
+      </div>
+      <div class="top-actions">
+        <button class="btn btn-ghost btn-sm" data-view="wallet">Buy credits</button>
+        <button class="btn btn-primary btn-sm" data-view="teach">List a skill</button>
+      </div>
+    </div>
+
+    <section class="view active" id="view-discover">
+      <div class="stats-row">
+        <div class="stat-card green">
+          <div class="k">Available credits</div>
+          <div class="v" id="statAvail">0 <small>TC</small></div>
+        </div>
+        <div class="stat-card gold">
+          <div class="k">Locked in escrow</div>
+          <div class="v" id="statEscrow">0 <small>TC</small></div>
+        </div>
+        <div class="stat-card violet">
+          <div class="k">Earned by teaching</div>
+          <div class="v" id="statEarned">0 <small>TC</small></div>
+        </div>
+        <div class="stat-card">
+          <div class="k">Spent on learning</div>
+          <div class="v" id="statSpent">0 <small>TC</small></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Skill marketplace</h2>
+            <p>Every listing costs 1 Time Credit per hour taught.</p>
+          </div>
+          <span class="tc-note">1 hour = 1 credit</span>
+        </div>
+        <div class="search-row">
+          <div class="search-box">
+            <span class="ic">⌕</span>
+            <input id="searchInput" type="search" placeholder="Search Python, guitar, French, Figma...">
+          </div>
+        </div>
+        <div class="chips" id="chips"></div>
+        <div class="skill-grid" id="skillGrid"></div>
+      </div>
+    </section>
+
+    <section class="view" id="view-sessions">
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Active swaps</h2>
+            <p>Credits stay locked here until both peers confirm the session.</p>
+          </div>
+          <span class="tc-note" id="escrowNote">0 TC in escrow</span>
+        </div>
+        <div class="session-list" id="activeSessions"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Completed swaps</h2>
+            <p>Your finished sessions and released credits.</p>
+          </div>
+        </div>
+        <div class="session-list" id="doneSessions"></div>
+      </div>
+    </section>
+
+    <section class="view" id="view-teach">
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Teach and earn Time Credits</h2>
+            <p>List a skill, run a one-hour session, get paid in time.</p>
+          </div>
+        </div>
+        <form class="form-grid" id="teachForm">
+          <div class="form-2">
+            <div class="field">
+              <label for="teachSkill">Skill you can teach</label>
+              <input id="teachSkill" required maxlength="40" placeholder="e.g. Python basics">
+            </div>
+            <div class="field">
+              <label for="teachCategory">Category</label>
+              <select id="teachCategory">
+                <option>Coding</option><option>Music</option><option>Languages</option>
+                <option>Design</option><option>Academics</option><option>Creative</option><option>Career</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-2">
+            <div class="field">
+              <label for="teachLevel">Level offered</label>
+              <select id="teachLevel">
+                <option>Beginner friendly</option><option>Intermediate</option><option>Advanced</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="teachFormat">Format</label>
+              <select id="teachFormat">
+                <option>Online · Google Meet</option><option>On campus · Library</option><option>Either works</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="teachDesc">One-line pitch</label>
+            <textarea id="teachDesc" rows="2" maxlength="120" placeholder="What will someone walk away knowing?"></textarea>
+            <div class="hint">Earnings are fixed at 1 credit per hour — no negotiating, no undercutting.</div>
+          </div>
+          <button class="btn btn-primary" type="submit">Publish listing</button>
+        </form>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Incoming teaching requests</h2>
+            <p>Students who booked you. Their credit is already in escrow.</p>
+          </div>
+        </div>
+        <div class="session-list" id="requestList"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>My listings</h2>
+            <p>What you can teach right now.</p>
+          </div>
+        </div>
+        <div class="skill-grid" id="myListings"></div>
+      </div>
+    </section>
+
+    <section class="view" id="view-wallet">
+      <div class="stats-row">
+        <div class="stat-card green">
+          <div class="k">Available</div>
+          <div class="v" id="walletAvail">0 <small>TC</small></div>
+        </div>
+        <div class="stat-card gold">
+          <div class="k">In escrow</div>
+          <div class="v" id="walletEscrow">0 <small>TC</small></div>
+        </div>
+        <div class="stat-card violet">
+          <div class="k">Lifetime earned</div>
+          <div class="v" id="walletEarned">0 <small>TC</small></div>
+        </div>
+        <div class="stat-card">
+          <div class="k">Lifetime spent</div>
+          <div class="v" id="walletSpent">0 <small>TC</small></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Boost your vault</h2>
+            <p>Demo purchases are simulated. No real payment is collected.</p>
+          </div>
+        </div>
+        <div class="upgrade-grid">
+          <div class="mini-plan">
+            <h4>SkillVault Pro</h4>
+            <div class="p">₹199 <small>/month</small></div>
+            <p>Unlimited monthly swaps and priority search ranking.</p>
+            <button class="btn btn-primary btn-sm" id="buyPro">Upgrade to Pro</button>
+          </div>
+          <div class="mini-plan">
+            <h4>Credit Top-Up Pack</h4>
+            <div class="p">₹299 <small>one-time</small></div>
+            <p>Instantly add 5 Time Credits via UPI.</p>
+            <button class="btn btn-accent btn-sm" id="buyTopup">Add 5 credits</button>
+          </div>
+          <div class="mini-plan">
+            <h4>Verified Trust Badge</h4>
+            <div class="p">₹499 <small>one-time</small></div>
+            <p>ID and portfolio verification for instant credibility.</p>
+            <button class="btn btn-ghost btn-sm" id="buyBadge">Get verified</button>
+          </div>
+          <div class="mini-plan">
+            <h4>How credits work</h4>
+            <div class="p" style="font-size:15px">1 hr taught = 1 TC</div>
+            <p>Credits never expire. They are locked at booking and released after dual confirmation.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Transaction ledger</h2>
+            <p>Every credit movement in your vault.</p>
+          </div>
+          <span class="tc-note">Escrow-backed</span>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="ledger">
+            <thead>
+              <tr><th>Detail</th><th>Type</th><th>Date</th><th style="text-align:right">Credits</th></tr>
+            </thead>
+            <tbody id="ledgerBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="modal-backdrop" id="onboardModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="onbTitle">
+    <div class="bonus-visual">
+      <div class="bonus-orb">5</div>
+      <h3 id="onbTitle">Welcome to SkillVault</h3>
+      <p class="sub">Every new member starts with 5 Time Credits — enough for five one-hour sessions. On the house.</p>
+    </div>
+    <div class="field">
+      <label for="onbName">What should we call you?</label>
+      <input id="onbName" placeholder="Your first name" maxlength="18" autocomplete="off">
+    </div>
+    <div style="margin-top:18px">
+      <div class="how-line"><span>Starter bonus</span><b>+5 TC</b></div>
+      <div class="how-line"><span>Cost to you</span><b>₹0</b></div>
+      <div class="how-line"><span>Valid on</span><b>Any skill in the vault</b></div>
+      <div class="total-line"><span>Opening balance</span><b>5 TC</b></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" id="claimCredits">Claim my 5 credits</button>
+    </div>
+    <p class="footer-note">Demo mode: your credits are stored in this browser only.</p>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="bookModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="bookTitle">
+    <button class="modal-close" data-close="bookModal" aria-label="Close">×</button>
+    <h3 id="bookTitle">Book a swap</h3>
+    <p class="sub" id="bookSub">Your credit locks in escrow until you both confirm.</p>
+    <div id="bookBody"></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" data-close="bookModal">Cancel</button>
+      <button class="btn btn-primary" id="bookConfirm">Lock credit in escrow</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
