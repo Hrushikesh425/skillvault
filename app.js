@@ -159,12 +159,12 @@ function renderSkills(){
     return '<article class="skill-card">' +
       '<div class="skill-top">' +
         '<div class="avatar ' + p.av + '">' + p.initials + '</div>' +
-        '<div class="who"><b>' + esc(p.name) + (p.verified ? ' <span style="color:#ffd166;font-size:11px">●</span>' : '') + '</b><span>' + p.swaps + ' swaps · ' + p.level + '</span></div>' +
+        '<div class="who"><b>' + esc(p.name) + (p.verified ? ' <span style="color:#b7791f;font-size:11px">●</span>' : '') + '</b><span>' + p.swaps + ' swaps · ' + p.level + '</span></div>' +
         '<span class="rating">★ ' + p.rating + '</span>' +
       '</div>' +
       '<div class="skill-title">' + esc(p.skill) + '</div>' +
       '<p class="skill-desc">' + esc(p.desc) + '</p>' +
-      '<div class="skill-tags"><span class="mini-tag">' + esc(p.format) + '</span><span class="mini-tag">' + esc(p.cat) + '</span>' + (p.verified ? '<span class="mini-tag" style="color:#ffd166;border-color:rgba(255,209,102,.35)">Verified</span>' : '') + '</div>' +
+      '<div class="skill-tags"><span class="mini-tag">' + esc(p.format) + '</span><span class="mini-tag">' + esc(p.cat) + '</span>' + (p.verified ? '<span class="mini-tag" style="color:#96650a;border-color:#f0dcaa;background:#fff6e0">Verified</span>' : '') + '</div>' +
       '<div class="skill-foot">' +
         '<div class="cost"><b>1 TC</b> / hour <span class="match" style="margin-left:6px">' + p.match + '% match</span></div>' +
         '<button class="btn btn-primary btn-sm" data-book="' + p.id + '"' + (canBook ? '' : ' disabled') + '>' + (canBook ? 'Book swap' : 'Need credits') + '</button>' +
@@ -240,7 +240,7 @@ function renderListings(){
     '<article class="skill-card">' +
       '<div class="skill-top">' +
         '<div class="avatar av-2">' + initialsOf(state.name || 'Guest') + '</div>' +
-        '<div class="who"><b>You' + (state.verified ? ' <span style="color:#ffd166;font-size:11px">●</span>' : '') + '</b><span>Our newest teacher · 0 swaps</span></div>' +
+        '<div class="who"><b>You' + (state.verified ? ' <span style="color:#b7791f;font-size:11px">●</span>' : '') + '</b><span>Our newest teacher · 0 swaps</span></div>' +
         '<span class="match">' + (90 + (i % 7)) + '% match</span>' +
       '</div>' +
       '<div class="skill-title">' + esc(l.skill) + '</div>' +
